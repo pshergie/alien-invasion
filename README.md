@@ -1,3 +1,3 @@
 # Alien Invasion
 
-Classic game made with Python
+The classic game made with Python
