@@ -1,14 +1,17 @@
-import sys
 import pygame
 
 from settings import Settings
 from ship import Ship
+# from background import Background
+import game_functions as gf
 
 
 def run_game():
     # Init the game and create window object
     pygame.init()
     ai_settings = Settings()
+    # background = Background("images/bg.jpg", (0, 0))
+
     screen = pygame.display.set_mode(
         (ai_settings.screen_width, ai_settings.screen_height)
     )
@@ -16,18 +19,12 @@ def run_game():
     pygame.display.set_caption("Alien Invasion")
 
     # Create the ship
-    ship = Ship(screen)
+    ship = Ship(ai_settings, screen)
 
     # Start main game loop
     while True:
-        # Handle keyboard & mouse events
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
-
-        # Re-render screen
-        screen.fill(ai_settings.bg_color)
-        ship.blitme()
-
+        gf.check_events(ship)
+        ship.update()
+        gf.update_screen(ai_settings, screen, ship)
 
 run_game()

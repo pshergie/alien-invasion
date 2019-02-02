@@ -2,9 +2,10 @@ import pygame
 
 
 class Ship():
-    def __init__(self, screen):
+    def __init__(self, ai_settings, screen):
         """Initialise the ship and set it's initial position"""
         self.screen = screen
+        self.ai_settings = ai_settings
 
         # Load ship's image & get a rectangle
         self.image = pygame.image.load('images/ship.bmp')
@@ -14,6 +15,26 @@ class Ship():
         # Every ship should appear at bottom of screen
         self.rect.centerx = self.screen_rect.centerx
         self.rect.bottom = self.screen_rect.bottom
+
+        # Save center ship coordinates
+        self.center = float(self.rect.centerx)
+
+        # Move flag
+        self.moving_right = False
+        self.moving_left = False
+
+    def update(self):
+        """Update ship position considering the flag"""
+        # update center attribute not rect
+        if self.moving_right:
+            self.center += self.ai_settings.ship_speed_factor
+        if self.moving_left:
+            self.center -= self.ai_settings.ship_speed_factor
+
+        # Update rect attribute based on self.center
+        self.rect.centerx = self.center
+
+
 
     def blitme(self):
         """Draw the ship in current position"""
