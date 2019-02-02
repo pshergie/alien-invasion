@@ -2,8 +2,9 @@ import pygame
 
 from settings import Settings
 from ship import Ship
-# from background import Background
 import game_functions as gf
+# from background import Background
+
 
 
 def run_game():
