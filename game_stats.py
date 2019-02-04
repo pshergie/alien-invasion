@@ -6,8 +6,8 @@ class GameStats:
         self.ai_settings = ai_settings
         self.reset_stats()
 
-        # The game launches at active state
-        self.game_active = True
+        # The game launches in inactive state
+        self.game_active = False
 
     def reset_stats(self):
         """Initialize in process statistics"""

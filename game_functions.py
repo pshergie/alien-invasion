@@ -33,18 +33,44 @@ def check_keyup_events(event, ship):
         ship.moving_left = False
 
 
-def check_events(ai_settings, screen, ship, bullets):
+def check_events(ai_settings, screen, stats, play_button, ship, aliens, bullets):
     # Handle keyboard & mouse events
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            mouse_x, mouse_y = pygame.mouse.get_pos()
+            check_play_button(
+                ai_settings, screen, stats, play_button,
+                ship, aliens, bullets, mouse_x, mouse_y)
         elif event.type == pygame.KEYDOWN:
             check_keydown_events(event, ai_settings, screen, ship, bullets)
         elif event.type == pygame.KEYUP:
             check_keyup_events(event, ship)
 
 
-def update_screen(ai_settings, screen, ship, aliens, bullets):
+def check_play_button(
+        ai_settings, screen, stats, play_button, ship, aliens, bullets, mouse_x, mouse_y):
+    """Start new game on Play button press"""
+    button_clicked = play_button.rect.collidepoint(mouse_x, mouse_y)
+    if button_clicked and not stats.game_active:
+        # Hide mouse cursor
+        pygame.mouse.set_visible(False)
+
+        # Reset game statistics
+        stats.reset_stats()
+        stats.game_active = True
+
+        # Empty aliens & bullets lists
+        aliens.empty()
+        aliens.empty()
+
+        # Create new fleet & set the ship to bottom center
+        create_fleet(ai_settings, screen, ship, aliens)
+        ship.center_ship()
+
+
+def update_screen(ai_settings, screen, stats, ship, aliens, bullets, play_button):
     # Re-render screen
     screen.fill(ai_settings.bg_color)
 
@@ -55,6 +81,10 @@ def update_screen(ai_settings, screen, ship, aliens, bullets):
 
     ship.blitme()
     aliens.draw(screen)
+
+    # Show Play button if game is inactive
+    if not stats.game_active:
+        play_button.draw_button()
 
     # Show last rendered screen
     pygame.display.flip()
@@ -104,6 +134,7 @@ def ship_hit(ai_settings, stats, screen, ship, aliens, bullets):
 
     else:
         stats.game_active = False
+        pygame.mouse.set_visible(True)
 
 
 def create_fleet(ai_settings, screen, ship, aliens):
