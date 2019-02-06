@@ -12,6 +12,7 @@ The classic game made with Python
 - [ ] new fleet wave sound
 - [ ] alien & ship collision sound
 - [ ] slower aliens movement
+- [ ] make msi/dmg file
 - [ ] write player's high score in a file
 - [ ] aliens can shoot
 - [ ] game over screen
