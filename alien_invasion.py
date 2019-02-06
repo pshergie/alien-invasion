@@ -37,8 +37,10 @@ def run_game():
     # Create aliens fleet
     gf.create_fleet(ai_settings, screen, ship, aliens)
 
+    game_process = True
+
     # Start main game loop
-    while True:
+    while game_process:
         gf.check_events(
             ai_settings, screen, stats, sb, play_button, ship, aliens, bullets)
 

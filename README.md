@@ -2,12 +2,10 @@
 
 The classic game made with Python
 
-**TODOs:**
-
-**Bugs:**
-- [ ] pre-shot on play screen
+**TODOs**
 
 **Features:**
+- [x] pause game by esc/p
 - [ ] shot sound
 - [ ] background music
 - [ ] alien shot sound
@@ -19,8 +17,9 @@ The classic game made with Python
 - [ ] game over screen
 
 **Enhancements:**
+- [x] play game by enter/space key press
+- [ ] basic code refactoring
 - [ ] better start screen UI
 - [ ] transparent sprites
 - [ ] spasy background
-- [ ] play game by enter key press
 

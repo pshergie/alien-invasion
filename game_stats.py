@@ -8,6 +8,7 @@ class GameStats:
 
         # The game launches in inactive state
         self.game_active = False
+        self.game_paused = False
 
         # Best score shouldn't reset
         self.high_score = 0
