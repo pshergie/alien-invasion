@@ -14,6 +14,7 @@ The classic game made with Python
 - [ ] new fleet wave sound
 - [ ] alien & ship collision sound
 - [ ] slower aliens movement
+- [ ] make msi/dmg file
 
 **Enhancements:**
 - [ ] better start screen UI
