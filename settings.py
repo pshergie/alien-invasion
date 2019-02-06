@@ -1,4 +1,4 @@
-class Settings():
+class Settings:
     """Class that stores all game settings"""
 
     def __init__(self):

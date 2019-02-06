@@ -75,10 +75,7 @@ def start_game(ai_settings, screen, stats, sb, ship, aliens, bullets):
     stats.game_active = True
 
     # Empty score & level images
-    sb.prep_score()
-    sb.prep_high_score()
-    sb.prep_level()
-    sb.prep_ships()
+    sb.prep_images()
 
     # Empty aliens & bullets lists
     aliens.empty()
@@ -160,16 +157,20 @@ def check_bullet_alien_collisions(
             check_high_score(stats, sb)
 
     if len(aliens) == 0:
-        # Destroy existing bullets, speedup the game, create a new fleet
-        # and increase level count
-        bullets.empty()
-        ai_settings.increase_speed()
+        start_new_level(ai_settings, screen, stats, sb, ship, aliens, bullets)
 
-        # Increase level
-        stats.level += 1
-        sb.prep_level()
 
-        create_fleet(ai_settings, screen, ship, aliens)
+def start_new_level(ai_settings, screen, stats, sb, ship, aliens, bullets):
+    # Destroy existing bullets, speedup the game, create a new fleet
+    # and increase level count
+    bullets.empty()
+    ai_settings.increase_speed()
+
+    # Increase level
+    stats.level += 1
+    sb.prep_level()
+
+    create_fleet(ai_settings, screen, ship, aliens)
 
 
 def ship_hit(ai_settings, stats, sb, screen, ship, aliens, bullets):

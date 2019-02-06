@@ -17,6 +17,9 @@ class Scoreboard:
         self.font = pygame.font.SysFont(None, 48)
 
         # Prepare source image
+        self.prep_images()
+
+    def prep_images(self):
         self.prep_score()
         self.prep_high_score()
         self.prep_level()
@@ -59,6 +62,7 @@ class Scoreboard:
     def prep_ships(self):
         """Print ships left"""
         self.ships = Group()
+
         for ship_number in range(self.stats.ships_left):
             ship = Ship(self.ai_settings, self.screen)
             ship.rect.x = 10 + ship_number * ship.rect.width
