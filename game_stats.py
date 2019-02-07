@@ -12,6 +12,7 @@ class GameStats:
         # The game launches in inactive state
         self.game_active = False
         self.game_paused = False
+        self.game_ended = False
 
         # Best score shouldn't reset
         if os.path.exists("score.txt"):

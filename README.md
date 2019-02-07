@@ -8,7 +8,7 @@ The classic game made with Python
 - [x] pause game by esc/p
 - [x] slower aliens & ship movement
 - [x] write player's high score in a file
-- [ ] game over screen
+- [x] game over screen with current score
 - [ ] aliens can shoot
 - [ ] shot sound
 - [ ] background music
@@ -22,8 +22,8 @@ The classic game made with Python
 - [x] play game by enter/space key press
 - [x] basic code refactoring
 - [x] score labels
-- [ ] ship acceleration
-- [ ] better start screen UI
+- [x] better start screen UI
 - [ ] transparent sprites
 - [ ] spasy background
+- [ ] ship acceleration
 
