@@ -7,7 +7,7 @@ The classic game made with Python
 **Features:**
 - [x] pause game by esc/p
 - [x] slower aliens & ship movement
-- [ ] write player's high score in a file
+- [x] write player's high score in a file
 - [ ] game over screen
 - [ ] aliens can shoot
 - [ ] shot sound

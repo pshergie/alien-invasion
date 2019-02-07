@@ -13,6 +13,13 @@ def fire_bullet(ai_settings, screen, ship, bullets):
         bullets.add(new_bullet)
 
 
+def check_final_score(stats):
+    if stats.score >= stats.high_score:
+        score_file = open('score.txt', 'w')
+        score_file.write(str(stats.score))
+        score_file.close()
+
+
 def check_keydown_events(event, ai_settings, stats, sb, screen, ship, aliens, bullets):
     """Handle key down"""
     if event.key == pygame.K_RIGHT:
@@ -32,6 +39,7 @@ def check_keydown_events(event, ai_settings, stats, sb, screen, ship, aliens, bu
         elif not stats.game_active and not stats.game_paused:
             start_game(ai_settings, screen, stats, sb, ship, aliens, bullets)
     elif event.key == pygame.K_q:
+        check_final_score(stats)
         sys.exit()
     elif stats.game_active and event.key == pygame.K_ESCAPE or event.key == pygame.K_p:
         pause_game(stats)
@@ -50,6 +58,7 @@ def check_events(
     # Handle keyboard & mouse events
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
+            check_final_score(stats)
             sys.exit()
         elif event.type == pygame.MOUSEBUTTONDOWN:
             mouse_x, mouse_y = pygame.mouse.get_pos()

@@ -1,3 +1,6 @@
+import os
+
+
 class GameStats:
     """Trace statistics for the game"""
 
@@ -11,7 +14,17 @@ class GameStats:
         self.game_paused = False
 
         # Best score shouldn't reset
-        self.high_score = 0
+        if os.path.exists("score.txt"):
+            score_file = open('score.txt', 'r')
+            high_score = int(score_file.read())
+        else:
+            score_file = open('score.txt', 'w')
+            score_file.write("0")
+            high_score = 0
+
+        score_file.close()
+
+        self.high_score = high_score
 
     def reset_stats(self):
         """Initialize in process statistics"""
