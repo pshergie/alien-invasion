@@ -6,7 +6,7 @@ The classic game made with Python
 
 **Features:**
 - [x] pause game by esc/p
-- [ ] slower aliens & ship movement
+- [x] slower aliens & ship movement
 - [ ] write player's high score in a file
 - [ ] game over screen
 - [ ] aliens can shoot
@@ -17,9 +17,12 @@ The classic game made with Python
 - [ ] alien & ship collision sound
 - [ ] make msi/dmg file
 
+
 **Enhancements:**
 - [x] play game by enter/space key press
 - [x] basic code refactoring
+- [x] score labels
+- [ ] ship acceleration
 - [ ] better start screen UI
 - [ ] transparent sprites
 - [ ] spasy background

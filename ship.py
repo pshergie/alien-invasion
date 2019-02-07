@@ -8,6 +8,7 @@ class Ship(Sprite):
         super().__init__()
         self.screen = screen
         self.ai_settings = ai_settings
+        self.speed_up_scale = 1.1
 
         # Load ship's image & get a rectangle
         self.image = pygame.image.load('images/ship.bmp')

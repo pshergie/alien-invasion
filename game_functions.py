@@ -53,9 +53,12 @@ def check_events(
             sys.exit()
         elif event.type == pygame.MOUSEBUTTONDOWN:
             mouse_x, mouse_y = pygame.mouse.get_pos()
-            check_play_button(
-                ai_settings, screen, stats, sb, play_button,
-                ship, aliens, bullets, mouse_x, mouse_y)
+            if stats.game_paused:
+                resume_game(stats)
+            else:
+                check_play_button(
+                    ai_settings, screen, stats, sb, play_button,
+                    ship, aliens, bullets, mouse_x, mouse_y)
         elif event.type == pygame.KEYDOWN:
             check_keydown_events(
                 event, ai_settings, stats, sb, screen, ship, aliens, bullets)
@@ -90,10 +93,16 @@ def pause_game(stats):
     stats.game_active = False
     stats.game_paused = True
 
+    # Show mouse cursor
+    pygame.mouse.set_visible(True)
+
 
 def resume_game(stats):
     stats.game_active = True
     stats.game_paused = False
+
+    # Hide mouse cursor
+    pygame.mouse.set_visible(False)
 
 
 def check_play_button(

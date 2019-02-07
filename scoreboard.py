@@ -28,7 +28,7 @@ class Scoreboard:
     def prep_score(self):
         """Transform current score to a graphic image"""
         rounded_score = round(self.stats.score, -1)
-        score_str = "{:,}".format(rounded_score)
+        score_str = "score: {:,}".format(rounded_score)
         self.score_image = self.font.render(
             score_str, True, self.text_color, self.ai_settings.bg_color)
 
@@ -40,7 +40,7 @@ class Scoreboard:
     def prep_high_score(self):
         """Transform best score into image"""
         high_score = round(self.stats.high_score, -1)
-        high_score_str = "{:,}".format(high_score)
+        high_score_str = "best: {:,}".format(high_score)
         self.high_score_image = self.font.render(
             high_score_str, True, self.text_color, self.ai_settings.bg_color)
 
@@ -51,8 +51,9 @@ class Scoreboard:
 
     def prep_level(self):
         """Transform e=level into image"""
+        level_str = "lvl: {}".format(self.stats.level)
         self.level_image = self.font.render(
-            str(self.stats.level), True, self.text_color, self.ai_settings.bg_color)
+            level_str, True, self.text_color, self.ai_settings.bg_color)
 
         # Level display under the current score
         self.level_rect = self.level_image.get_rect()
