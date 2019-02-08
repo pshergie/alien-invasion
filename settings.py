@@ -8,6 +8,10 @@ class Settings:
         self.screen_height = 690
         self.bg_color = (230, 230, 230)
 
+        # Show fps flag
+        self.fps = 60
+        self.show_fps = True
+
         # Ship settings
         self.ship_limit = 3
 
@@ -30,9 +34,9 @@ class Settings:
 
     def initialize_dynamic_settings(self):
         """Initialize dynamic settings"""
-        self.ship_speed_factor = 1.4
-        self.bullet_speed_factor = 3
-        self.alien_speed_factor = 0.6
+        self.ship_speed_factor = 11.2
+        self.bullet_speed_factor = 24
+        self.alien_speed_factor = 4.8
 
         # fleet_direction = 1 means right; -1 means left
         self.fleet_direction = 1

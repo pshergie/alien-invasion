@@ -5,6 +5,7 @@ from ship import Ship
 import game_functions as gf
 from pygame.sprite import Group
 from game_stats import GameStats
+from fps_counter import FPSCounter
 from menu import Menu
 from scoreboard import Scoreboard
 # from background import Background
@@ -14,6 +15,7 @@ def run_game():
     # Init the game and create window object
     pygame.init()
     ai_settings = Settings()
+    clock = pygame.time.Clock()
     # background = Background("images/bg.jpg", (0, 0))
 
     screen = pygame.display.set_mode(
@@ -25,6 +27,7 @@ def run_game():
     # Create an instance for game statistics storage & scoreboard
     stats = GameStats(ai_settings)
     sb = Scoreboard(ai_settings, screen, stats)
+    fps_counter = FPSCounter(ai_settings, screen)
 
     # Create menu
     menu = Menu(screen, stats)
@@ -41,6 +44,8 @@ def run_game():
 
     # Start main game loop
     while game_process:
+        fps = int(clock.get_fps())
+
         gf.check_events(
             ai_settings, screen, stats, sb, menu, ship, aliens, bullets)
 
@@ -50,7 +55,12 @@ def run_game():
             gf.update_aliens(ai_settings, stats, sb, screen, ship, aliens, bullets)
 
         gf.update_screen(
-            ai_settings, screen, stats, sb, ship, aliens, bullets, menu)
+            ai_settings, screen, stats, sb, ship,
+            aliens, bullets, menu, fps_counter, fps)
+
+        # print("fps:", clock.get_fps())
+        # print(clock.get_fps())
+        clock.tick(ai_settings.fps)
 
 
 run_game()

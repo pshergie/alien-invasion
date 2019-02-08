@@ -3,6 +3,7 @@ import pygame
 from time import sleep
 from bullet import Bullet
 from alien import Alien
+from fps_counter import FPSCounter
 
 
 def fire_bullet(ai_settings, screen, ship, bullets):
@@ -11,6 +12,12 @@ def fire_bullet(ai_settings, screen, ship, bullets):
     if len(bullets) < ai_settings.bullets_allowed:
         new_bullet = Bullet(ai_settings, screen, ship)
         bullets.add(new_bullet)
+
+
+# def alien_fire_bullet(ai_settings, screen):
+#     """Create an alien bullet"""
+#     new_alien_bullet = Bullet(ai_settings, screen)
+#     alien_bullets.add(new_alien_bullet)
 
 
 def check_final_score(stats):
@@ -133,12 +140,17 @@ def check_play_button(
 
 
 def update_screen(
-        ai_settings, screen, stats, sb, ship, aliens, bullets, menu):
+        ai_settings, screen, stats, sb, ship,
+        aliens, bullets, menu, fps_counter, fps):
     # Re-render screen
     screen.fill(ai_settings.bg_color)
 
     # Show scoreboard
     sb.show_score()
+
+    # Show fps counter
+    fps_counter.show_fps()
+    fps_counter.prep_counter(fps)
 
     # All bullets draws before
     # screen & alien images
