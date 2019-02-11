@@ -30,12 +30,16 @@ class Settings:
         # Aliens cost increase factor
         self.score_scale = 1.5
 
+        # Shot frequency value
+        self.tick_factor = 100
+
         self.initialize_dynamic_settings()
 
     def initialize_dynamic_settings(self):
         """Initialize dynamic settings"""
         self.ship_speed_factor = 11.2
         self.bullet_speed_factor = 24
+        self.alien_bullet_speed_factor = self.bullet_speed_factor / 4
         self.alien_speed_factor = 4.8
 
         # fleet_direction = 1 means right; -1 means left

@@ -35,10 +35,14 @@ def run_game():
     # Create the ship, bullets group & aliens group
     ship = Ship(ai_settings, screen)
     bullets = Group()
+    alien_bullets = Group()
     aliens = Group()
 
     # Create aliens fleet
     gf.create_fleet(ai_settings, screen, ship, aliens)
+
+    # Ticks
+    ticks = 0
 
     game_process = True
 
@@ -50,16 +54,23 @@ def run_game():
             ai_settings, screen, stats, sb, menu, ship, aliens, bullets)
 
         if stats.game_active:
+            ticks += 1
             ship.update()
-            gf.update_bullets(ai_settings, screen, stats, sb, ship, aliens, bullets)
-            gf.update_aliens(ai_settings, stats, sb, screen, ship, aliens, bullets)
+            gf.update_bullets(
+                ai_settings, screen, stats, sb, ship,
+                aliens, bullets, alien_bullets)
+
+            gf.update_aliens(
+                ai_settings, stats, sb, screen, ship,
+                aliens, bullets, alien_bullets, ticks)
+
+            if ticks % ai_settings.tick_factor == 0:
+                ticks = 0
 
         gf.update_screen(
-            ai_settings, screen, stats, sb, ship,
-            aliens, bullets, menu, fps_counter, fps)
+            ai_settings, screen, stats, sb, ship, aliens,
+            bullets, alien_bullets, menu, fps_counter, fps)
 
-        # print("fps:", clock.get_fps())
-        # print(clock.get_fps())
         clock.tick(ai_settings.fps)
 
 

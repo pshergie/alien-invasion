@@ -31,6 +31,9 @@ class Alien(Sprite):
         )
         self.rect.x = self.x
 
+        # if ticks % 50 == 0:
+        #     self.shoot()
+
     def check_edges(self):
         """Return True if the alien is at the edge"""
         screen_rect = self.screen.get_rect()
@@ -39,3 +42,7 @@ class Alien(Sprite):
             return True
         elif self.rect.left <= 0:
             return True
+
+    def shoot(self):
+        """Trigger alien to shoot"""
+        print("Shot!")

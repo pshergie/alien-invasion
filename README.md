@@ -11,8 +11,7 @@ The classic game made with Python
 - [x] game over screen with current score
 - [x] lock game at 60 fps
 - [x] fps counter
-- [ ] fps counter checkbox in menu
-- [ ] aliens can shoot
+- [x] aliens can shoot
 - [ ] shot sound
 - [ ] background music
 - [ ] alien shot sound
@@ -27,6 +26,9 @@ The classic game made with Python
 - [x] basic code refactoring
 - [x] score labels
 - [x] better start screen UI
+- [ ] refactor bullet & alien bullet classes
+- [ ] fix bullet z-index
 - [ ] transparent sprites
 - [ ] spasy background
+- [ ] set optimal game speed & aliens size/count
 
