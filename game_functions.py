@@ -212,7 +212,8 @@ def check_bullet_alien_collisions(
 
     if len(aliens) == 0:
         start_new_level(
-            ai_settings, screen, stats, sb, ship, aliens, bullets, alien_bullets)
+            ai_settings, screen, stats, sb, ship,
+            aliens, bullets, alien_bullets)
 
 
 def check_alien_bullet_ship_collisions(
@@ -222,7 +223,8 @@ def check_alien_bullet_ship_collisions(
 
     if pygame.sprite.spritecollideany(ship, alien_bullets):
         ship_hit(
-            ai_settings, stats, sb, screen, ship, aliens, bullets, alien_bullets)
+            ai_settings, stats, sb, screen,
+            ship, aliens, bullets, alien_bullets)
 
 
 def start_new_level(
@@ -315,7 +317,9 @@ def update_aliens(
 
     # Check collision "alien-ship"
     if pygame.sprite.spritecollideany(ship, aliens):
-        ship_hit(ai_settings, stats, sb, screen, ship, aliens, bullets)
+        ship_hit(
+            ai_settings, stats, sb, screen, ship,
+            aliens, bullets, alien_bullets)
 
     # Check aliens which reached bottom edge
     check_aliens_bottom(
@@ -337,7 +341,8 @@ def check_aliens_bottom(
         if alien.rect.bottom >= screen_rect.bottom:
             # Did the same as for ship collision
             ship_hit(
-                ai_settings, stats, sb, screen, ship, aliens, bullets, alien_bullets)
+                ai_settings, stats, sb, screen, ship,
+                aliens, bullets, alien_bullets)
             break
 
 
