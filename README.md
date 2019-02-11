@@ -17,7 +17,6 @@ The classic game made with Python
 - [ ] alien shot sound
 - [ ] new fleet wave sound
 - [ ] alien & ship collision sound
-- [ ] difficulty level
 - [ ] make msi/dmg file
 
 

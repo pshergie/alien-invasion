@@ -9,7 +9,7 @@ class FPSCounter:
         self.ai_settings = ai_settings
 
         # Font settings
-        self.text_color = (30, 30, 30)
+        self.text_color = ai_settings.font_color
         self.font = pygame.font.SysFont(None, 30)
 
         # Prepare source image
